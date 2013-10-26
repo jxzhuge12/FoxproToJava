@@ -1,0 +1,11 @@
+import java_cup.runtime.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+
+
+start with program;
+
+if_statement ::= IF expr NEWLINE* (expr NEWLINE*)+ NEWLINE* ENDIF
+
+NEWLINE ::= [\r\n(\r\n)]+
