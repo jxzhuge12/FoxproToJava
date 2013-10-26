@@ -63,6 +63,5 @@ ENDIF = [Ee][Nn][Dd][Ii][Ff]
 "}"				{ System.out.println("sym.RC"); }
 "("				{ System.out.println("sym.LPAR"); }
 ")"				{ System.out.println("sym.RPAR"); }
-[\n]			{ ++yyline; }
-[\r\t\f]+		{ System.out.println("sym.NEWLINE"); }
+\r\n|\n			{ ++yyline; }
 [\ ]			{  }
