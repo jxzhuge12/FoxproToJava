@@ -32,27 +32,37 @@ import java.io.InputStream;
 %}
 
 DIGIT = [0-9]
-INT = {DIGIT}+
+INT = {DIGIT}+|\-{DIGIT}+
+RATI = {DIGIT}+\.{DIGIT}+|\-{DIGIT}+\.{DIGIT}+
 LETTER = [a-zA-Z_]+
 IDE = {LETTER}({LETTER}|{DIGIT})*
 IF = [Ii][Ff]
+ELSE = [Ee][Ll][Ss][Ee]
 ENDIF = [Ee][Nn][Dd][Ii][Ff]
 
 
 %%
 
-"IF"			{ return new Symbol(sym.IF); }
-"ENDIF"			{ return new Symbol(sym.ENDIF); }
-"+"				{ return new Symbol(sym.ADD); }
-"-"				{ return new Symbol(sym.MINUS); }
-"*"				{ return new Symbol(sym.PLUS); }
-"/"				{ return new Symbol(sym.DIV); }
-"{"				{ return new Symbol(sym.LC); }
-"}"				{ return new Symbol(sym.RC); }
-"("				{ return new Symbol(sym.LPAR); }
-")"				{ return new Symbol(sym.RPAR); }
-{IDE}			{ return new Symbol(sym.IDE, yytext()); }
-{INT}			{ return new Symbol(sym.INTCONST, new Integer(Integer.parseInt(yytext()))); }
+"IF"			{ System.out.println("sym.IF"); }
+"ELSE"			{ System.out.println("sym.ELSE"); }
+"ENDIF"			{ System.out.println("sym.ENDIF"); }
+{IDE}			{ System.out.println("sym.IDE, yytext()"); }
+{RATI}			{ System.out.println("sym.RATIONAL, new Double(Double.parseDouble(yytext()))"); }
+{INT}			{ System.out.println("sym.INTCONST, new Integer(Integer.parseInt(yytext()))"); }
+">="			{ System.out.println("sym.GE"); }
+"<="			{ System.out.println("sym.LE"); }
+">"				{ System.out.println("sym.GT"); }
+"<"				{ System.out.println("sym.LT"); }
+"<>"			{ System.out.println("sym.UNEQ"); }	
+"="				{ System.out.println("sym.EQUAL"); }	
+"+"				{ System.out.println("sym.ADD"); }
+"-"				{ System.out.println("sym.MINUS"); }
+"*"				{ System.out.println("sym.MULTI"); }
+"/"				{ System.out.println("sym.DIV"); }
+"{"				{ System.out.println("sym.LC"); }
+"}"				{ System.out.println("sym.RC"); }
+"("				{ System.out.println("sym.LPAR"); }
+")"				{ System.out.println("sym.RPAR"); }
 [\n]			{ ++yyline; }
-[\r\t\f\ ]+		{    }
-.				{ System.err.println("unexpected char " + yytext() + " !\n"); System.exit(0); }
+[\r\t\f]+		{ System.out.println("sym.NEWLINE"); }
+[\ ]			{  }

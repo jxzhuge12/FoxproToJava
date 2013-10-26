@@ -1,11 +1,54 @@
+package translator;
+
 import java_cup.runtime.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
+parser code 
+{:
+
+	public Node root = null;
+
+	public static parser getParser(String pPath) throws Exception {
+		InputStream is = null;
+		is = new FileInputStream(pPath);
+
+		return new parser(new Yylex(is));
+	}
+
+	public Node getTree() throws Exception {
+		if (root == null) {
+			this.parse();
+		}
+		return root;
+	}
+
+	public static void main(String args[]) throws Exception {
+		new parser(new Yylex(System.in)).parse();
+	}
+
+:}
+
+terminal IF, ELSE, ENDIF;
+terminal GE, LE, GT, LT, UNEQ, EQUAL;
+terminal ADD, MINUS, MULTI, DIV;
+terminal LC, RC, LPAR, RPAR;
+terminal Integer INTCONST;
+terminal Double RATIONAL;
+terminal String IDE;
+
+non terminal var, expr, assign;
 
 
 start with program;
 
-if_statement ::= IF expr NEWLINE* (expr NEWLINE*)+ NEWLINE* ENDIF
+if_statement 	::= IF expr NEWLINE* (expr NEWLINE*)+ NEWLINE* ENDIF
+assign			::= IDE EQUAL expr
+expr 			::= expr ADD expr
+					|expr MINUS expr
+					|expr MULTI expr
+					|expr DIV expr
+					|LPAR expr RPAR
+					|INTCONST
 
 NEWLINE ::= [\r\n(\r\n)]+
