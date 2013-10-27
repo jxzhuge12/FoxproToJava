@@ -43,26 +43,26 @@ ENDIF = [Ee][Nn][Dd][Ii][Ff]
 
 %%
 
-"IF"			{ System.out.println("sym.IF"); }
-"ELSE"			{ System.out.println("sym.ELSE"); }
-"ENDIF"			{ System.out.println("sym.ENDIF"); }
-{IDE}			{ System.out.println("sym.IDE, yytext()"); }
-{RATI}			{ System.out.println("sym.RATIONAL, new Double(Double.parseDouble(yytext()))"); }
-{INT}			{ System.out.println("sym.INTCONST, new Integer(Integer.parseInt(yytext()))"); }
-">="			{ System.out.println("sym.GE"); }
-"<="			{ System.out.println("sym.LE"); }
-">"				{ System.out.println("sym.GT"); }
-"<"				{ System.out.println("sym.LT"); }
-"<>"			{ System.out.println("sym.UNEQ"); }	
-"="				{ System.out.println("sym.ASSIGN"); }
-"=="			{ System.out.println("sym.EQUAL"); }		
-"+"				{ System.out.println("sym.ADD"); }
-"-"				{ System.out.println("sym.MINUS"); }
-"*"				{ System.out.println("sym.MULTI"); }
-"/"				{ System.out.println("sym.DIV"); }
-"{"				{ System.out.println("sym.LC"); }
-"}"				{ System.out.println("sym.RC"); }
-"("				{ System.out.println("sym.LPAR"); }
-")"				{ System.out.println("sym.RPAR"); }
+"IF"			{ return new symbol(sym.IF); }
+"ELSE"			{ return new symbol(sym.ELSE); }
+"ENDIF"			{ return new symbol(sym.ENDIF); }
+{IDE}			{ return new symbol(sym.IDE, yytext()); }
+{RATI}			{ return new symbol(sym.RATIONAL, new Double(Double.parseDouble(yytext()))); }
+{INT}			{ return new symbol(sym.INTCONST, new Integer(Integer.parseInt(yytext()))); }
+">="			{ return new symbol(sym.GE); }
+"<="			{ return new symbol(sym.LE); }
+">"				{ return new symbol(sym.GT); }
+"<"				{ return new symbol(sym.LT); }
+"<>"			{ return new symbol(sym.UNEQ); }	
+"="				{ return new symbol(sym.ASSIGN); }
+"=="			{ return new symbol(sym.EQUAL); }		
+"+"				{ return new symbol(sym.ADD); }
+"-"				{ return new symbol(sym.MINUS); }
+"*"				{ return new symbol(sym.MULTI); }
+"/"				{ return new symbol(sym.DIV); }
+"{"				{ return new symbol(sym.LC); }
+"}"				{ return new symbol(sym.RC); }
+"("				{ return new symbol(sym.LPAR); }
+")"				{ return new symbol(sym.RPAR); }
 \r\n|\n			{ ++yyline; }
 [\ ]			{  }

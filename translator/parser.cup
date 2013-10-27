@@ -32,7 +32,10 @@ parser code
 terminal IF, ELSE, ENDIF;
 terminal GE, LE, GT, LT, UNEQ, EQUAL, ASSIGN;
 terminal ADD, MINUS, MULTI, DIV;
-terminal LC, RC, LPAR, RPAR;
+/**
+ *terminal LPAR, RPAR;
+ *terminal LC, RC;
+ */
 terminal Integer INTCONST;
 terminal Double RATIONAL;
 terminal String IDE;
@@ -44,17 +47,22 @@ non terminal assignment;
 non terminal exas;
 non terminal expr;
 
+precedence nonassoc ASSIGN;
+precedence nonassoc LE, LT, EQUAL, UNEQ, GE, GT;
+precedence left ADD, MINUS;
+precedence left MULTI, DIV;
+
 start with program;
 program				::= if_statement:is					{: System.out.println("if_statement"); :}
 						|if_else_statement:ies			{: System.out.println("if_else_statement"); :};
 if_else_statement	::= IF expr:e1 exas:ea1 ELSE exas:ea2 ENDIF	{: System.out.println("if_else_statement2"); :};
 if_statement 		::= IF expr:e1 exas:ea ENDIF		{: System.out.println("if_statement2"); :};
 exas				::= expr:ex							{: System.out.println("exexpr"); :}
-						|assignment:as					{: System.out.println("exassignment"); :}
-						|exas:ea1 exas:ea2				{: System.out.println("multiexas"); :};
+						|assignment:as					{: System.out.println("exassignment"); :};
 assignment 			::= IDE:i ASSIGN expr:e1			{: System.out.println("assignment"); :};
 expr 				::= expr:e1 EQUAL expr:e2			{: System.out.println("equal"); :}
 						|expr:e1 GE expr:e2				{: System.out.println("ge"); :}
+						|expr:e1 UNEQ expr:e2			{: System.out.println("unequal"); :}
 						|expr:e1 LE expr:e2				{: System.out.println("le"); :}
 						|expr:e1 GT expr:e2				{: System.out.println("gt"); :}
 						|expr:e1 LT expr:e2				{: System.out.println("lt"); :}
@@ -62,7 +70,9 @@ expr 				::= expr:e1 EQUAL expr:e2			{: System.out.println("equal"); :}
 						|expr:e1 MINUS expr:e2			{: System.out.println("-"); :}
 						|expr:e1 MULTI expr:e2			{: System.out.println("*"); :}
 						|expr:e1 DIV expr:e2			{: System.out.println("/"); :}
-						|LPAR expr:e1 RPAR				{: System.out.println("(expr)"); :}
+						/**
+						 *|LPAR expr:e1 RPAR				{: System.out.println("(expr)"); :}
+						 */
 						|INTCONST:intconst				{: System.out.println("constant"); :}
 						|RATIONAL:rational				{: System.out.println("rational"); :}
 						|IDE:i							{: System.out.println("name"); :};

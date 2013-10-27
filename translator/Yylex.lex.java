@@ -248,28 +248,29 @@ class Yylex implements java_cup.runtime.Scanner {
 		/* 21 */ YY_NO_ANCHOR,
 		/* 22 */ YY_NO_ANCHOR,
 		/* 23 */ YY_NO_ANCHOR,
-		/* 24 */ YY_NOT_ACCEPT,
-		/* 25 */ YY_NO_ANCHOR,
-		/* 26 */ YY_NOT_ACCEPT,
-		/* 27 */ YY_NO_ANCHOR,
+		/* 24 */ YY_NO_ANCHOR,
+		/* 25 */ YY_NOT_ACCEPT,
+		/* 26 */ YY_NO_ANCHOR,
+		/* 27 */ YY_NOT_ACCEPT,
 		/* 28 */ YY_NO_ANCHOR,
 		/* 29 */ YY_NO_ANCHOR,
 		/* 30 */ YY_NO_ANCHOR,
 		/* 31 */ YY_NO_ANCHOR,
-		/* 32 */ YY_NO_ANCHOR
+		/* 32 */ YY_NO_ANCHOR,
+		/* 33 */ YY_NO_ANCHOR
 	};
 	private int yy_cmap[] = unpackFromString(1,130,
 "0:10,23,0:2,22,0:18,24,0:7,20,21,16,15,0,11,10,17,9:10,0:2,14,13,12,0:2,8:3" +
 ",7,3,2,8:2,1,8:2,4,8,6,8:4,5,8:7,0:4,8,0,8:26,18,0,19,0:2,25:2")[0];
 
-	private int yy_rmap[] = unpackFromString(1,33,
-"0,1,2,3,4,5,6,5:10,7,5:3,8,7:2,9,7,8,10,11,12,13,14,15")[0];
+	private int yy_rmap[] = unpackFromString(1,34,
+"0,1,2,3,4,5,6,7:10,8,7:4,9,8:2,10,8,9,11,12,13,14,15,16")[0];
 
-	private int yy_nxt[][] = unpackFromString(16,26,
-"-1,1,25,31,25:5,2,-1,3,4,5,6,7,8,9,10,11,12,13,24,14,15,16,-1,25,17,25:7,-1" +
-":25,2,26,-1:24,2,-1:29,18,-1:50,19,20,-1:13,25:9,-1:25,21,-1:39,14,-1:3,25:" +
-"2,22,25:6,-1:17,25,23,25:7,-1:17,25:4,27,25:4,-1:17,28,25:8,-1:17,25:3,29,2" +
-"5,32,25:3,-1:17,25:6,30,25:2,-1:16");
+	private int yy_nxt[][] = unpackFromString(17,26,
+"-1,1,26,32,26:5,2,-1,3,4,5,6,7,8,9,10,11,12,13,25,14,15,16,-1,26,17,26:7,-1" +
+":25,2,27,-1:24,2,-1:29,18,-1:25,19,-1:24,20,21,-1:39,26:9,-1:25,22,-1:39,14" +
+",-1:3,26:2,23,26:6,-1:17,26,24,26:7,-1:17,26:4,28,26:4,-1:17,29,26:8,-1:17," +
+"26:3,30,26,33,26:3,-1:17,26:6,31,26:2,-1:16");
 
 	public java_cup.runtime.Symbol next_token ()
 		throws java.io.IOException {
@@ -316,55 +317,55 @@ class Yylex implements java_cup.runtime.Scanner {
 					yy_to_mark();
 					switch (yy_last_accept_state) {
 					case 1:
-						{ System.out.println("sym.IDE, yytext()"); }
+						{ return new symbol(sym.IDE, yytext()); }
 					case -2:
 						break;
 					case 2:
-						{ System.out.println("sym.INTCONST, new Integer(Integer.parseInt(yytext()))"); }
+						{ return new symbol(sym.INTCONST, new Integer(Integer.parseInt(yytext()))); }
 					case -3:
 						break;
 					case 3:
-						{ System.out.println("sym.MINUS"); }
+						{ return new symbol(sym.MINUS); }
 					case -4:
 						break;
 					case 4:
-						{ System.out.println("sym.GT"); }
+						{ return new symbol(sym.GT); }
 					case -5:
 						break;
 					case 5:
-						{ System.out.println("sym.EQUAL"); }
+						{ return new symbol(sym.ASSIGN); }
 					case -6:
 						break;
 					case 6:
-						{ System.out.println("sym.LT"); }
+						{ return new symbol(sym.LT); }
 					case -7:
 						break;
 					case 7:
-						{ System.out.println("sym.ADD"); }
+						{ return new symbol(sym.ADD); }
 					case -8:
 						break;
 					case 8:
-						{ System.out.println("sym.MULTI"); }
+						{ return new symbol(sym.MULTI); }
 					case -9:
 						break;
 					case 9:
-						{ System.out.println("sym.DIV"); }
+						{ return new symbol(sym.DIV); }
 					case -10:
 						break;
 					case 10:
-						{ System.out.println("sym.LC"); }
+						{ return new symbol(sym.LC); }
 					case -11:
 						break;
 					case 11:
-						{ System.out.println("sym.RC"); }
+						{ return new symbol(sym.RC); }
 					case -12:
 						break;
 					case 12:
-						{ System.out.println("sym.LPAR"); }
+						{ return new symbol(sym.LPAR); }
 					case -13:
 						break;
 					case 13:
-						{ System.out.println("sym.RPAR"); }
+						{ return new symbol(sym.RPAR); }
 					case -14:
 						break;
 					case 14:
@@ -380,60 +381,64 @@ class Yylex implements java_cup.runtime.Scanner {
 					case -17:
 						break;
 					case 17:
-						{ System.out.println("sym.IF"); }
+						{ return new symbol(sym.IF); }
 					case -18:
 						break;
 					case 18:
-						{ System.out.println("sym.GE"); }
+						{ return new symbol(sym.GE); }
 					case -19:
 						break;
 					case 19:
-						{ System.out.println("sym.UNEQ"); }
+						{ return new symbol(sym.EQUAL); }
 					case -20:
 						break;
 					case 20:
-						{ System.out.println("sym.LE"); }
+						{ return new symbol(sym.UNEQ); }
 					case -21:
 						break;
 					case 21:
-						{ System.out.println("sym.RATIONAL, new Double(Double.parseDouble(yytext()))"); }
+						{ return new symbol(sym.LE); }
 					case -22:
 						break;
 					case 22:
-						{ System.out.println("sym.ELSE"); }
+						{ return new symbol(sym.RATIONAL, new Double(Double.parseDouble(yytext()))); }
 					case -23:
 						break;
 					case 23:
-						{ System.out.println("sym.ENDIF"); }
+						{ return new symbol(sym.ELSE); }
 					case -24:
 						break;
-					case 25:
-						{ System.out.println("sym.IDE, yytext()"); }
+					case 24:
+						{ return new symbol(sym.ENDIF); }
 					case -25:
 						break;
-					case 27:
-						{ System.out.println("sym.IDE, yytext()"); }
+					case 26:
+						{ return new symbol(sym.IDE, yytext()); }
 					case -26:
 						break;
 					case 28:
-						{ System.out.println("sym.IDE, yytext()"); }
+						{ return new symbol(sym.IDE, yytext()); }
 					case -27:
 						break;
 					case 29:
-						{ System.out.println("sym.IDE, yytext()"); }
+						{ return new symbol(sym.IDE, yytext()); }
 					case -28:
 						break;
 					case 30:
-						{ System.out.println("sym.IDE, yytext()"); }
+						{ return new symbol(sym.IDE, yytext()); }
 					case -29:
 						break;
 					case 31:
-						{ System.out.println("sym.IDE, yytext()"); }
+						{ return new symbol(sym.IDE, yytext()); }
 					case -30:
 						break;
 					case 32:
-						{ System.out.println("sym.IDE, yytext()"); }
+						{ return new symbol(sym.IDE, yytext()); }
 					case -31:
+						break;
+					case 33:
+						{ return new symbol(sym.IDE, yytext()); }
+					case -32:
 						break;
 					default:
 						yy_error(YY_E_INTERNAL,false);
