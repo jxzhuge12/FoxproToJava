@@ -47,11 +47,11 @@ non terminal expr;
 start with program;
 program				::= if_statement:is			{: System.out.println("if_statement"); :}
 						|if_else_statement:ies		{: System.out.println("if_else_statement"); :}
-if_else_statement	::= IF expr:e1 exas:ea ELSE exas:ea ENDIF	{: System.out.println("if_else_statement2"); :}
+if_else_statement	::= IF expr:e1 exas:ea1 ELSE exas:ea2 ENDIF	{: System.out.println("if_else_statement2"); :}
 if_statement 		::= IF expr:e1 exas:ea ENDIF	{: System.out.println("if_statement2"); :}
 exas				::= expr:ex					{: System.out.println("exexpr"); :}
 						|assignment:as				{: System.out.println("exassignment"); :}
-						|exas:ex exas:ex				{: System.out.println("multiexas"); :}
+						|exas:ea1 exas:ea2				{: System.out.println("multiexas"); :}
 assignment 			::= IDE:i ASSIGN expr:e1			{: System.out.println("assignment"); :}
 expr 				::= expr:e1 EQUAL expr:e2			{: System.out.println("equal"); :}
 						|expr:e1 GE expr:e2			{: System.out.println("ge"); :}
