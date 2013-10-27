@@ -30,25 +30,33 @@ parser code
 :}
 
 terminal IF, ELSE, ENDIF;
-terminal GE, LE, GT, LT, UNEQ, EQUAL;
+terminal GE, LE, GT, LT, UNEQ, EQUAL, ASSIGN;
 terminal ADD, MINUS, MULTI, DIV;
 terminal LC, RC, LPAR, RPAR;
 terminal Integer INTCONST;
 terminal Double RATIONAL;
 terminal String IDE;
 
-non terminal var, expr, assign;
-
+non terminal if_else_statement;
+non terminal if_statement;
+non terminal assignment;
+non terminal expr;
 
 start with program;
 
-if_statement 	::= IF expr NEWLINE* (expr NEWLINE*)+ NEWLINE* ENDIF
-assign			::= IDE EQUAL expr
-expr 			::= expr ADD expr
-					|expr MINUS expr
-					|expr MULTI expr
-					|expr DIV expr
-					|LPAR expr RPAR
-					|INTCONST
-
-NEWLINE ::= [\r\n(\r\n)]+
+if_else_statement	::= IF expr (expr)+ ELSE (expr)+ ENDIF
+if_statement 		::= IF expr (expr)+ ENDIF
+assignment 			::= IDE ASSIGN expr
+expr 				::= expr EQUAL expr
+						|expr GE expr
+						|expr LE expr
+						|expr GT expr
+						|expr LT expr
+						|expr ADD expr
+						|expr MINUS expr
+						|expr MULTI expr
+						|expr DIV expr
+						|LPAR expr RPAR
+						|INTCONST
+						|RATIONAL
+					

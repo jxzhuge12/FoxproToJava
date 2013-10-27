@@ -54,7 +54,8 @@ ENDIF = [Ee][Nn][Dd][Ii][Ff]
 ">"				{ System.out.println("sym.GT"); }
 "<"				{ System.out.println("sym.LT"); }
 "<>"			{ System.out.println("sym.UNEQ"); }	
-"="				{ System.out.println("sym.EQUAL"); }	
+"="				{ System.out.println("sym.ASSIGN"); }
+"=="			{ System.out.println("sym.EQUAL"); }		
 "+"				{ System.out.println("sym.ADD"); }
 "-"				{ System.out.println("sym.MINUS"); }
 "*"				{ System.out.println("sym.MULTI"); }
