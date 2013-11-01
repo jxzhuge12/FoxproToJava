@@ -46,6 +46,8 @@ non terminal if_statement;
 non terminal assignment;
 non terminal exas;
 non terminal expr;
+non terminal term;
+non terminal op;
 
 precedence nonassoc ASSIGN;
 precedence nonassoc LE, LT, EQUAL, UNEQ, GE, GT;
@@ -59,20 +61,12 @@ if_else_statement	::= IF expr:e1 exas:ea1 ELSE exas:ea2 ENDIF	{: System.out.prin
 if_statement 		::= IF expr:e1 exas:ea ENDIF		{: System.out.println("if_statement2"); :};
 exas				::= expr:ex							{: System.out.println("exexpr"); :}
 						|assignment:as					{: System.out.println("exassignment"); :};
-assignment 			::= IDE:i ASSIGN expr:e1			{: System.out.println("assignment"); :};
-expr 				::= expr:e1 EQUAL expr:e2			{: System.out.println("equal"); :}
-						|expr:e1 GE expr:e2				{: System.out.println("ge"); :}
-						|expr:e1 UNEQ expr:e2			{: System.out.println("unequal"); :}
-						|expr:e1 LE expr:e2				{: System.out.println("le"); :}
-						|expr:e1 GT expr:e2				{: System.out.println("gt"); :}
-						|expr:e1 LT expr:e2				{: System.out.println("lt"); :}
-						|expr:e1 ADD expr:e2			{: System.out.println("+"); :}
-						|expr:e1 MINUS expr:e2			{: System.out.println("-"); :}
-						|expr:e1 MULTI expr:e2			{: System.out.println("*"); :}
-						|expr:e1 DIV expr:e2			{: System.out.println("/"); :}
+assignment 			::= IDE:i ASSIGN expr:e1s			{: System.out.println("assignment"); :};
+expr 				::= expr:e1 op term:t1				{: System.out.println("operation"); :};
 						/**
 						 *|LPAR expr:e1 RPAR				{: System.out.println("(expr)"); :}
 						 */
-						|INTCONST:intconst				{: System.out.println("constant"); :}
+op					::= ADD|MINUS|MULTI|DIV|EQUAL|GE|UNEQ|LE|GT|LT;
+term 				::= INTCONST:intconst				{: System.out.println("constant"); :}
 						|RATIONAL:rational				{: System.out.println("rational"); :}
 						|IDE:i							{: System.out.println("name"); :};

@@ -60,9 +60,5 @@ ENDIF = [Ee][Nn][Dd][Ii][Ff]
 "-"				{ return new symbol(sym.MINUS); }
 "*"				{ return new symbol(sym.MULTI); }
 "/"				{ return new symbol(sym.DIV); }
-"{"				{ return new symbol(sym.LC); }
-"}"				{ return new symbol(sym.RC); }
-"("				{ return new symbol(sym.LPAR); }
-")"				{ return new symbol(sym.RPAR); }
 \r\n|\n			{ ++yyline; }
 [\ ]			{  }

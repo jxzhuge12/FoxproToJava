@@ -245,32 +245,28 @@ class Yylex implements java_cup.runtime.Scanner {
 		/* 18 */ YY_NO_ANCHOR,
 		/* 19 */ YY_NO_ANCHOR,
 		/* 20 */ YY_NO_ANCHOR,
-		/* 21 */ YY_NO_ANCHOR,
+		/* 21 */ YY_NOT_ACCEPT,
 		/* 22 */ YY_NO_ANCHOR,
-		/* 23 */ YY_NO_ANCHOR,
+		/* 23 */ YY_NOT_ACCEPT,
 		/* 24 */ YY_NO_ANCHOR,
-		/* 25 */ YY_NOT_ACCEPT,
+		/* 25 */ YY_NO_ANCHOR,
 		/* 26 */ YY_NO_ANCHOR,
-		/* 27 */ YY_NOT_ACCEPT,
+		/* 27 */ YY_NO_ANCHOR,
 		/* 28 */ YY_NO_ANCHOR,
-		/* 29 */ YY_NO_ANCHOR,
-		/* 30 */ YY_NO_ANCHOR,
-		/* 31 */ YY_NO_ANCHOR,
-		/* 32 */ YY_NO_ANCHOR,
-		/* 33 */ YY_NO_ANCHOR
+		/* 29 */ YY_NO_ANCHOR
 	};
 	private int yy_cmap[] = unpackFromString(1,130,
-"0:10,23,0:2,22,0:18,24,0:7,20,21,16,15,0,11,10,17,9:10,0:2,14,13,12,0:2,8:3" +
-",7,3,2,8:2,1,8:2,4,8,6,8:4,5,8:7,0:4,8,0,8:26,18,0,19,0:2,25:2")[0];
+"0:10,19,0:2,18,0:18,20,0:9,16,15,0,11,10,17,9:10,0:2,14,13,12,0:2,8:3,7,3,2" +
+",8:2,1,8:2,4,8,6,8:4,5,8:7,0:4,8,0,8:26,0:5,21:2")[0];
 
-	private int yy_rmap[] = unpackFromString(1,34,
-"0,1,2,3,4,5,6,7:10,8,7:4,9,8:2,10,8,9,11,12,13,14,15,16")[0];
+	private int yy_rmap[] = unpackFromString(1,30,
+"0,1,2,3,4,5,6,7:6,8,7:4,9,8:2,10,8,9,11,12,13,14,15,16")[0];
 
-	private int yy_nxt[][] = unpackFromString(17,26,
-"-1,1,26,32,26:5,2,-1,3,4,5,6,7,8,9,10,11,12,13,25,14,15,16,-1,26,17,26:7,-1" +
-":25,2,27,-1:24,2,-1:29,18,-1:25,19,-1:24,20,21,-1:39,26:9,-1:25,22,-1:39,14" +
-",-1:3,26:2,23,26:6,-1:17,26,24,26:7,-1:17,26:4,28,26:4,-1:17,29,26:8,-1:17," +
-"26:3,30,26,33,26:3,-1:17,26:6,31,26:2,-1:16");
+	private int yy_nxt[][] = unpackFromString(17,22,
+"-1,1,22,28,22:5,2,-1,3,4,5,6,7,8,9,21,10,11,12,-1,22,13,22:7,-1:21,2,23,-1:" +
+"20,2,-1:25,14,-1:21,15,-1:20,16,17,-1:31,22:9,-1:21,18,-1:31,10,-1:3,22:2,1" +
+"9,22:6,-1:13,22,20,22:7,-1:13,22:4,24,22:4,-1:13,25,22:8,-1:13,22:3,26,22,2" +
+"9,22:3,-1:13,22:6,27,22:2,-1:12");
 
 	public java_cup.runtime.Symbol next_token ()
 		throws java.io.IOException {
@@ -353,66 +349,66 @@ class Yylex implements java_cup.runtime.Scanner {
 					case -10:
 						break;
 					case 10:
-						{ return new symbol(sym.LC); }
+						{ ++yyline; }
 					case -11:
 						break;
 					case 11:
-						{ return new symbol(sym.RC); }
+						{  }
 					case -12:
 						break;
 					case 12:
-						{ return new symbol(sym.LPAR); }
+						
 					case -13:
 						break;
 					case 13:
-						{ return new symbol(sym.RPAR); }
+						{ return new symbol(sym.IF); }
 					case -14:
 						break;
 					case 14:
-						{ ++yyline; }
+						{ return new symbol(sym.GE); }
 					case -15:
 						break;
 					case 15:
-						{  }
+						{ return new symbol(sym.EQUAL); }
 					case -16:
 						break;
 					case 16:
-						
+						{ return new symbol(sym.UNEQ); }
 					case -17:
 						break;
 					case 17:
-						{ return new symbol(sym.IF); }
+						{ return new symbol(sym.LE); }
 					case -18:
 						break;
 					case 18:
-						{ return new symbol(sym.GE); }
+						{ return new symbol(sym.RATIONAL, new Double(Double.parseDouble(yytext()))); }
 					case -19:
 						break;
 					case 19:
-						{ return new symbol(sym.EQUAL); }
+						{ return new symbol(sym.ELSE); }
 					case -20:
 						break;
 					case 20:
-						{ return new symbol(sym.UNEQ); }
+						{ return new symbol(sym.ENDIF); }
 					case -21:
 						break;
-					case 21:
-						{ return new symbol(sym.LE); }
+					case 22:
+						{ return new symbol(sym.IDE, yytext()); }
 					case -22:
 						break;
-					case 22:
-						{ return new symbol(sym.RATIONAL, new Double(Double.parseDouble(yytext()))); }
+					case 24:
+						{ return new symbol(sym.IDE, yytext()); }
 					case -23:
 						break;
-					case 23:
-						{ return new symbol(sym.ELSE); }
+					case 25:
+						{ return new symbol(sym.IDE, yytext()); }
 					case -24:
 						break;
-					case 24:
-						{ return new symbol(sym.ENDIF); }
+					case 26:
+						{ return new symbol(sym.IDE, yytext()); }
 					case -25:
 						break;
-					case 26:
+					case 27:
 						{ return new symbol(sym.IDE, yytext()); }
 					case -26:
 						break;
@@ -423,22 +419,6 @@ class Yylex implements java_cup.runtime.Scanner {
 					case 29:
 						{ return new symbol(sym.IDE, yytext()); }
 					case -28:
-						break;
-					case 30:
-						{ return new symbol(sym.IDE, yytext()); }
-					case -29:
-						break;
-					case 31:
-						{ return new symbol(sym.IDE, yytext()); }
-					case -30:
-						break;
-					case 32:
-						{ return new symbol(sym.IDE, yytext()); }
-					case -31:
-						break;
-					case 33:
-						{ return new symbol(sym.IDE, yytext()); }
-					case -32:
 						break;
 					default:
 						yy_error(YY_E_INTERNAL,false);
